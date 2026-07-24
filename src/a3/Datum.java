@@ -7,17 +7,6 @@ public class Datum extends DatumBase {
     }
     
     public static Datum parse(String s){
-        int[][] pos1 = {
-                {0,1,2,3},
-                {5,6},
-                {8,9}
-        };
-
-        int[][] pos2 = {
-                {0,1},
-                {3,4},
-                {6,7,8,9}
-        };
 
         int j = 0;
         int m = 0;
@@ -31,13 +20,13 @@ public class Datum extends DatumBase {
         }
         
         if(trennz == '/'){
-            j = Integer.parseInt(s.substring(pos1[0][0], pos1[0][pos1[0].length - 1]));
-            m = Integer.parseInt(s.substring(pos1[1][0], pos1[1][pos1[1].length - 1]));
-            t = Integer.parseInt(s.substring(pos1[2][0], pos1[2][pos1[2].length - 1]));
+            j = Integer.parseInt(s.substring(0 , 4));
+            m = Integer.parseInt(s.substring(5, 7));
+            t = Integer.parseInt(s.substring(8, 10));
         } else if(trennz == '.'){
-            t = Integer.parseInt(s.substring(pos2[0][0], pos2[0][pos2[0].length - 1]));
-            m = Integer.parseInt(s.substring(pos2[1][0], pos2[1][pos2[1].length - 1]));
-            j = Integer.parseInt(s.substring(pos2[2][0], pos2[2][pos2[2].length - 1])); 
+            t = Integer.parseInt(s.substring(0,3));
+            m = Integer.parseInt(s.substring(4, 6));
+            j = Integer.parseInt(s.substring(7, 10)); 
         }
         return new Datum(j, m, t);
     }
