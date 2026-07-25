@@ -7,7 +7,7 @@ public class Datum extends DatumBase {
     }
     
     public static Datum parse(String s){
-
+        if(s.length() != 10) throw new IllegalArgumentException();
         int j = 0;
         int m = 0;
         int t = 0;
@@ -19,14 +19,16 @@ public class Datum extends DatumBase {
             }
         }
         
-        if(trennz == '/'){
-            j = Integer.parseInt(s.substring(0 , 4));
+        if (trennz == '/') {
+            j = Integer.parseInt(s.substring(0, 4));
             m = Integer.parseInt(s.substring(5, 7));
             t = Integer.parseInt(s.substring(8, 10));
-        } else if(trennz == '.'){
-            t = Integer.parseInt(s.substring(0,3));
-            m = Integer.parseInt(s.substring(4, 6));
-            j = Integer.parseInt(s.substring(7, 10)); 
+        } else if (trennz == '.') {
+            t = Integer.parseInt(s.substring(0, 2));
+            m = Integer.parseInt(s.substring(3, 5));
+            j = Integer.parseInt(s.substring(6, 10));
+        } else {
+            throw new NumberFormatException();
         }
         return new Datum(j, m, t);
     }
