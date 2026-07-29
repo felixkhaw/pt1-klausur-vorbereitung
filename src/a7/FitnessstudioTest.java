@@ -56,6 +56,7 @@ public class FitnessstudioTest {
      * Klasse verwenden können, bevor super(...) abgeschlossen ist.
      */
     public static void main(String[] args) {
-        
+        Basismitgliedschaft bm1 = new Basismitgliedschaft("Ulf", 2020);
+        System.out.println(bm1.monatsbeitrag());
     }
 }
